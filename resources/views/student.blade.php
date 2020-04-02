@@ -11,14 +11,15 @@
     <title>Student management system</title>
   </head>
   <body>
+      @include("navbar")
     <h1>Hello, world!</h1>
     @if($layout == 'index')
         <div class="container-fluid">
             <div class="row">   
-            <section class="col">
+            <section class="col-md-7">
             @include("studentslist")
             </section>
-            <section class="col"></section>    
+            <section class="col-md-5"></section>    
             </div>
         </div>
 
