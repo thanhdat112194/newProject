@@ -27,9 +27,41 @@
         <div class="container-fluid">
             <div class="row">
                 <section class="col">
-                @include("studentslist")
+                    @include("studentslist")
                 </section>
-                <section class="col"></section>   
+                <section class="col">
+                <form action="{{ url('/store')}}" method="post">
+                        @csrf
+                        <div class="form-group">
+                          <label >CNE</label>
+                          <input name="cne" type="text" class="form-control"  placeholder="Enter cne">
+                        </div>
+                        <div class="form-group">
+                            <label >First Name</label>
+                            <input name="firstName" type="text" class="form-control" placeholder="Enter the First Name">
+                          </div>
+                          <div class="form-group">
+                            <label >Second Name</label>
+                            <input name="secondName" type="text" class="form-control" placeholder="Enter the Second Name">
+                          </div>
+                          <div class="form-group">
+                            <label>Age</label>
+                            <input name="age" type="text" class="form-control" placeholder="Enter Age">
+                          </div>
+                          <div class="form-group">
+                            <label >Sepeciality</label>
+                            <input name="speciality" type="text" class="form-control" placeholder="Enter sepeciality">
+                          </div>
+
+                          <input type="submit" class="btn btn-info" value="save">
+                          <input type="reset" class="btn btn-warning" value="reset">
+
+
+                    </form>
+
+
+
+                </section>   
             </div> 
         </div>
     @elseif($layout == 'show')
@@ -47,7 +79,36 @@
             <section class="col">
             @include("studentslist")
             </section>
-            <section class="col"></section>    
+            <section class="col">
+                <form action="{{ url('/update/'.$student->id)}}" method="post">
+                    @csrf
+                    <div class="form-group">
+                      <label >CNE</label>
+                    <input  value="{{$student->cne}}" name="cne" type="text" class="form-control"  placeholder="Enter cne">
+                    </div>
+                    <div class="form-group">
+                        <label >First Name</label>
+                        <input  value="{{$student->firstName}}" name="firstName" type="text" class="form-control" placeholder="Enter the First Name">
+                      </div>
+                      <div class="form-group">
+                        <label >Second Name</label>
+                        <input value="{{$student->secondName}}" name="secondName" type="text" class="form-control" placeholder="Enter the Second Name">
+                      </div>
+                      <div class="form-group">
+                        <label>Age</label>
+                        <input value="{{$student->age}}" name="age" type="text" class="form-control" placeholder="Enter Age">
+                      </div>
+                      <div class="form-group">
+                        <label >Speciality</label>
+                        <input  value="{{$student->speciality}}" name="speciality" type="text" class="form-control" placeholder="Enter sepeciality">
+                      </div>
+
+                      <input type="submit" class="btn btn-info" value="Update">
+                      <input type="reset" class="btn btn-warning" value="reset">
+
+
+                </form>
+            </section>    
         </div>
     </div>
     @endif
